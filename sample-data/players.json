@@ -1,0 +1,37 @@
+{
+    "player1": {
+        "name": "Rosie the Ruiner",
+        "imageUrl": "",
+        "position": "Jammer",
+        "uid": "18LRpadeHkg2bx6ADMbsM0FlWPv2",
+        "firebaseKey": ""
+    },
+    "player2": {
+        "name": "Nasty Peolosi",
+        "imageUrl": "",
+        "position": "Blocker",
+        "uid": "18LRpadeHkg2bx6ADMbsM0FlWPv2",
+        "firebaseKey": ""
+    },
+    "player3": {
+        "name": "Tess of the DerbyWheels",
+        "imageUrl": "",
+        "position": "Blocker",
+        "uid": "18LRpadeHkg2bx6ADMbsM0FlWPv2",
+        "firebaseKey": ""
+    },
+    "player4": {
+        "name": "Sylvia Wrath",
+        "imageUrl": "",
+        "position": "Pivot",
+        "uid": "",
+        "firebaseKey": "18LRpadeHkg2bx6ADMbsM0FlWPv2"
+    },
+    "player5": {
+        "name": "Holli GoBiteMe",
+        "imageUrl": "",
+        "position": "Jammer",
+        "uid": "someoneelse",
+        "firebaseKey": ""
+    }
+}
