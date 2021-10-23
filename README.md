@@ -51,8 +51,8 @@ export default function Form({
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
 - [Check out the deployed site](https://hot-sauce-hotties-roster.netlify.app/)
-- [Flow Chart](#your-link)
-- [Project Board](#your-link)
+- [Flow Chart](https://docs.google.com/presentation/d/1q-f450WcUorv6UyCtVuWmkEzUAMkXgo_JesChZRU9wk/edit?usp=sharing)
+
 
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
