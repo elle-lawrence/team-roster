@@ -56,9 +56,9 @@ export default function Form({
 
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
-<img width="1148" alt="Welcome Sign In" src="welcome-sign-in.png">
-<img width="1148" alt="Team Roster View" src="team-view.png">
-<img width="1148" alt="Form view" src="form-view.png">
+<img width="1148" alt="Welcome Sign In" src="https://github.com/elle-lawrence/team-roster/blob/main/public/welcome-sign-in.png">
+<img width="1148" alt="Team Roster View" src="https://github.com/elle-lawrence/team-roster/blob/main/public/team-view.png">
+<img width="1148" alt="Form view" src="https://github.com/elle-lawrence/team-roster/blob/main/public/form-view.png">
 
 ## Contributors
 - [ELLE LAWRENCE](https://github.com/elle-lawrence)
