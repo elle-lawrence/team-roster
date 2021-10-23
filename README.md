@@ -1,82 +1,64 @@
-# React Template
-[![Netlify Status](https://api.netlify.com/api/v1/badges/339c4ae9-fc7f-41b4-9b49-2dab0a20eaba/deploy-status)](https://app.netlify.com/sites/react-template-21/deploys)
+# Hot Sauce Hotties Team Roster  [![Netlify Status](https://api.netlify.com/api/v1/badges/64ec0ec8-08b6-40b2-ba41-281d956b15c3/deploy-status)](https://app.netlify.com/sites/hot-sauce-hotties-roster/deploys)
 
-[See Live Demo of this Template](https://react-template-21.netlify.app/)
+This app allows the user to mange their team roster. Add new players, edit and delete them. 
 
-This template includes all the dependencies and set up needed for you to work within defined code standards and structure to get you up and running quickly.
+[View App](https://hot-sauce-hotties-roster.netlify.app/)
+## Tech Stack
+- ReactJS
+- Bootstrap
+- Reactstrap
+- SCSS
 
-## Topics
-- [Get Started](#get-started)
-- [Starting the Project](#starting-the-project)
-- [Other important tidbits](#other-important-tidbits)
-    - [React Dev Tools](#react-dev-tools)
-    - [Using axios](#using-axios)
-    - [Deploying on Netlify](#deploying-on-netlify)
-___
+## Code Snippet
+export default function Form({
+  playerObj, setPlayers, setEditItem, user,
+}) {
+  const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
+  const history = useHistory();
 
-## Get Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-![Use this Template](./documentation/usetemplate.png)
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      if (playerObj.firebaseKey) {
+        setFormInput({
+          name: playerObj.name,
+          firebaseKey: playerObj.firebaseKey,
+          imageUrl: playerObj.imageUrl,
+          position: playerObj.position,
+          uid: user.uid,
+        });
+      }
+    }
+    return () => {
+      isMounted = false;
+    };
+    // DEPENDENCY ARRAY WATCHES JUST THE OBJ TO CHANGE;
+  }, [playerObj]);
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-![Create Project](./documentation/createproject.png)
 
-3. Clone your new repo to your local machine
-4. Go to the **NEXT** section
+## About the User <!-- This is a scaled down user persona -->
+- The ideal user for this application is a coach or team manager
+- They have players on their teams that they would like to display and keep organized
+- The problem this app solves for them is it allows them to get their players represented on a app that other users would eventually be able to log into and see who is on the team.
 
-## Starting the Project
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name
-1. Open the `/public/index.html` file and change the `title` attribute to the name of your application
-1. Rename the `.env.local.sample` file to `.env.local` file. The final file name should be `.env.local`
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short
-1. From your command line, be in the root directory and run `npx husky install`
-1. To start your application, run `npm start`
+## Features 
+- Using React to print to the Dom
+- Componentized Styling
+- Ability to Add players with a form component
+- Ability to edit player details and delete player from roster
 
-### If you see this, you are set to go!
-![LIT](./documentation/lit-screen.png)
 
-**NOTES:** 
-- Changes you make to the project will make the browser reload on save...no more hard refresh unless something goes wrong.
 
-## Other Important Tidbits
-### React Dev Tools
-From this time forward, you will be expected to have a clean console in order for your assignments to be approved. Use [React Developer Tools Chrome Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) to help with debugging.
-### Including Images with React
-If you have a folder of local images that you want to load into your code things get a little strange with webpack.  Remember the only way webpack knows about assets is if they are imported into your javascript files.  Even our CSS is not added until those files are imported into our javascript files.  Below is some sample code for how to load a local image file into your project
+## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
+- [Check out the deployed site](https://hot-sauce-hotties-roster.netlify.app/)
+- [Flow Chart](#your-link)
+- [Project Board](#your-link)
 
-```js
-import cat from './assets/cat.jpg';
 
-<>
-  <img src=${cat} alt="picture of a cat"/>
-</>
+## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
+<img width="1148" alt="Welcome Sign In" src="welcome-sign-in.png">
+<img width="1148" alt="Team Roster View" src="team-view.png">
+<img width="1148" alt="Form view" src="form-view.png">
 
-```
-### Using Axios
-> For every file you will need to make an API request in, you will need to import Axios
-```js
-import axios from 'axios';
-
-const examplePromise = () => {
-  axios.get('http://localhost:3001/example')
-    .then((data) => {
-      console.warn(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-});
-```
-
-### Deploying on Netlify
-
-- Build Command: `yarn build`
-- Publish directory: `build`
-- **Add Environmental Variables (NOT REQUIRED for Apps that do not use API Keys, etc)**
-    - Any Enviromental variables you are using in your `.env.local` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
-- **Update Firebase URL Settings**
-    - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-# Your own learning
-If you are interested in setting up your own project for things outside of class, you can run the command to start a React project `npx create-react-app {APP_NAME}` and setup all the files and structures from scratch.
+## Contributors
+- [ELLE LAWRENCE](https://github.com/elle-lawrence)
