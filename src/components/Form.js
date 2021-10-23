@@ -58,7 +58,6 @@ export default function Form({
         history.push('/');
       });
     } else {
-      console.warn(formInput);
       createPlayer({ ...formInput }).then((players) => {
         setPlayers(players);
         resetForm();

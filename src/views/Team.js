@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Player from '../components/Player';
 
 export default function Team({ players, setPlayers, setEditItem }) {
-  console.warn(players);
   return (
     <div>
       {players.map((player) => (
