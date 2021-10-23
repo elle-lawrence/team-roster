@@ -15,16 +15,17 @@ const Container = styled.div`
   h1 {
     color: #EB4511;
     text-align: center;
-    font-size: 64px;
+    font-size: 84px;
     font-weight: 400;
-    font-family: font-family: 'Norican', cursive;
+    font-family: 'Norican', cursive;
+    text-shadow: 2px 2px #B02E0C;
   }
   h2 {
-    color: #EB4511;
+    color: #B02E0C;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 400;
-    font-family: font-family: 'Norican', cursive;
+    font-family: 'Roboto', sans-serif;
   }
   h3 {
     color: #EB4511;
@@ -58,8 +59,8 @@ function Initialize() {
     <Container>
       {user ? (
         <>
-          <h1>Hot Sauce Hotties</h1>
-          <h2>Roller Derby</h2>
+          <h1 className="title">Hot Sauce Hotties</h1>
+          <h2>Nashville&apos;s Hottest Roller Derby Team</h2>
           <Navigation />
           <Routes players={players} setPlayers={setPlayers} playerObj={editItem} setEditItem={setEditItem} user={user} />
         </>
