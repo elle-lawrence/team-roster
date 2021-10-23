@@ -31,10 +31,10 @@ const updatePlayer = (player) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deletePlayer = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/players/${firebaseKey}.json`)
+const deletePlayer = (playerObj) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/players/${playerObj.firebaseKey}.json`)
     .then(() => {
-      getPlayers(uid).then(resolve);
+      getPlayers(playerObj.uid).then(resolve);
     })
     .catch(reject);
 });

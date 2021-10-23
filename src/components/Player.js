@@ -10,30 +10,38 @@ const PlayerStyle = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  h5 {
+  h4 {
     flex-grow: 2;
     margin-left: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #B02E0C;
+  }
+
+  h3 {
+      color: #EB4511;
   }
 
   button {
     color: white;
+    margin: 5px;
 
     &:first-child {
       margin-right: 10px;
     }
   }
 `;
-export default function Player({ player, setPlayers, setEditItem }) {
+export default function Player({
+  playerObj, setPlayers, setEditItem,
+}) {
   const history = useHistory();
 
   const handleClick = (method) => {
     if (method === 'delete') {
       console.warn('deleted');
-      setPlayers();
-      deletePlayer(player.firebaseKey).then(setPlayers);
+      deletePlayer(playerObj).then(setPlayers);
     }
     if (method === 'edit') {
-      setEditItem(player);
+      setEditItem(playerObj);
       history.push('/addnewplayer');
       console.warn('edited');
     }
@@ -42,8 +50,8 @@ export default function Player({ player, setPlayers, setEditItem }) {
   return (
     <>
       <PlayerStyle className="alert alert-light" role="alert">
-        <h3>{player.name}</h3>
-        <h4>{player.position}</h4>
+        <h3>{playerObj.name}</h3>
+        <h4>{playerObj.position}</h4>
         <button
           onClick={() => handleClick('edit')}
           className="btn btn-info"
@@ -64,7 +72,7 @@ export default function Player({ player, setPlayers, setEditItem }) {
 }
 
 Player.propTypes = {
-  player: PropTypes.shape({
+  playerObj: PropTypes.shape({
     name: PropTypes.string,
     imageUrl: PropTypes.string,
     position: PropTypes.string,

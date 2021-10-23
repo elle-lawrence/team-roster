@@ -7,32 +7,40 @@ const initialState = {
   name: '',
   imageUrl: '',
   position: '',
-  uid: '',
   firebaseKey: '',
 };
 
-export default function Form({ obj, setPlayers, setEditItem }) {
-  const [formInput, setFormInput] = useState(initialState);
+export default function Form({
+  playerObj, setPlayers, setEditItem, user,
+}) {
+  const [formInput, setFormInput] = useState({ ...initialState, uid: user.uid });
   const history = useHistory();
 
   useEffect(() => {
-    if (obj.firebaseKey) {
-      setFormInput({
-        name: obj.name,
-        firebaseKey: obj.firebaseKey,
-        imageUrl: obj.imageUrl,
-        position: obj.position,
-        uid: obj.uid,
-      });
+    let isMounted = true;
+    if (isMounted) {
+      if (playerObj.firebaseKey) {
+        setFormInput({
+          name: playerObj.name,
+          firebaseKey: playerObj.firebaseKey,
+          imageUrl: playerObj.imageUrl,
+          position: playerObj.position,
+          uid: user.uid,
+        });
+      }
     }
+    return () => {
+      isMounted = false;
+    };
     // DEPENDENCY ARRAY WATCHES JUST THE OBJ TO CHANGE;
-  }, [obj]);
+  }, [playerObj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
+
     }));
   };
 
@@ -43,13 +51,14 @@ export default function Form({ obj, setPlayers, setEditItem }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
+    if (playerObj.firebaseKey) {
       updatePlayer(formInput).then((players) => {
         setPlayers(players);
         resetForm();
         history.push('/');
       });
     } else {
+      console.warn(formInput);
       createPlayer({ ...formInput }).then((players) => {
         setPlayers(players);
         resetForm();
@@ -72,8 +81,28 @@ export default function Form({ obj, setPlayers, setEditItem }) {
             placeholder="ADD A PLAYER"
             required
           />
+          <input
+            className="form-control form-control-lg me-1"
+            type="url"
+            name="imageUrl"
+            id="imageUrl"
+            value={formInput.imageUrl}
+            onChange={handleChange}
+            placeholder="ADD IMAGE URL"
+            required
+          />
+          <input
+            className="form-control form-control-lg me-1"
+            type="text"
+            name="position"
+            id="position"
+            value={formInput.position}
+            onChange={handleChange}
+            placeholder="ADD POSITION"
+            required
+          />
           <button className="btn btn-success" type="submit">
-            {obj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
+            {playerObj.firebaseKey ? 'UPDATE' : 'SUBMIT'}
           </button>
         </div>
       </form>
@@ -82,7 +111,7 @@ export default function Form({ obj, setPlayers, setEditItem }) {
 }
 
 Form.propTypes = {
-  obj: PropTypes.shape({
+  playerObj: PropTypes.shape({
     name: PropTypes.string,
     firebaseKey: PropTypes.string,
     imageUrl: PropTypes.string,
@@ -91,6 +120,12 @@ Form.propTypes = {
   }),
   setPlayers: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    fullName: PropTypes.string,
+    profileImage: PropTypes.string,
+    uid: PropTypes.string,
+    user: PropTypes.string,
+  }),
 };
 
-Form.defaultProps = { obj: {} };
+Form.defaultProps = { playerObj: {}, user: null };

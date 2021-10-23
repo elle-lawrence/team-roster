@@ -13,14 +13,21 @@ const Container = styled.div`
   padding: 50px 0;
 
   h1 {
-    color: white;
+    color: #EB4511;
     text-align: center;
     font-size: 64px;
     font-weight: 400;
+    font-family: font-family: 'Norican', cursive;
   }
-
+  h2 {
+    color: #EB4511;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: font-family: 'Norican', cursive;
+  }
   h3 {
-    color: lightgrey;
+    color: #EB4511;
     text-align: center;
   }
 `;
@@ -40,7 +47,7 @@ function Initialize() {
           user: authed.email.split('@')[0],
         };
         setUser(userInfoObj);
-        getPlayers('18LRpadeHkg2bx6ADMbsM0FlWPv2').then(console.warn);
+        getPlayers(userInfoObj.uid).then(setPlayers);
       } else if (user || user === null) {
         setUser(false);
       }
@@ -52,8 +59,9 @@ function Initialize() {
       {user ? (
         <>
           <h1>Hot Sauce Hotties</h1>
+          <h2>Roller Derby</h2>
           <Navigation />
-          <Routes players={players} setPlayers={setPlayers} editItem={editItem} setEditItem={setEditItem} />
+          <Routes players={players} setPlayers={setPlayers} playerObj={editItem} setEditItem={setEditItem} user={user} />
         </>
       ) : (
         <SignIn user={user} />

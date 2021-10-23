@@ -6,7 +6,7 @@ import Form from '../components/Form';
 import Team from '../views/Team';
 
 export default function Routes({
-  players, setPlayers, editItem, setEditItem, user,
+  playerObj, players, setPlayers, setEditItem, user,
 }) {
   return (
     <div>
@@ -15,7 +15,7 @@ export default function Routes({
           exact
           path="/"
           component={() => (
-            <Team players={players} setPlayers={setPlayers} setEditItem={setEditItem} user={user} />
+            <Team players={players} setPlayers={setPlayers} setEditItem={setEditItem} />
           )}
         />
         <Route
@@ -23,9 +23,10 @@ export default function Routes({
           path="/addnewplayer"
           component={() => (
             <Form
-              obj={editItem}
+              playerObj={playerObj}
               setPlayers={setPlayers}
               setEditItem={setEditItem}
+              user={user}
             />
           )}
         />
@@ -35,13 +36,22 @@ export default function Routes({
 }
 
 Routes.propTypes = {
+  playerObj: PropTypes.shape({
+    name: PropTypes.string,
+    firebaseKey: PropTypes.string,
+    imageUrl: PropTypes.string,
+    position: PropTypes.string,
+    uid: PropTypes.string,
+  }),
   players: PropTypes.arrayOf(PropTypes.object).isRequired,
   setPlayers: PropTypes.func.isRequired,
-  editItem: PropTypes.node.isRequired,
   setEditItem: PropTypes.func.isRequired,
-  user: PropTypes.node,
+  user: PropTypes.shape({
+    fullName: PropTypes.string,
+    profileImage: PropTypes.string,
+    uid: PropTypes.string,
+    user: PropTypes.string,
+  }),
 };
 
-Routes.defaultProps = {
-  user: null,
-};
+Routes.defaultProps = { playerObj: {}, user: null };

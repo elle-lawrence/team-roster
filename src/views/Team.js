@@ -2,18 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Player from '../components/Player';
 
-export default function Team({
-  players, setPlayers, setEditItem,
-}) {
+export default function Team({ players, setPlayers, setEditItem }) {
+  console.warn(players);
   return (
     <div>
       {players.map((player) => (
         <Player
           key={player.firebaseKey}
-          player={player}
+          playerObj={player}
           setPlayers={setPlayers}
           setEditItem={setEditItem}
-          uid={player.uid}
         />
       ))}
     </div>
